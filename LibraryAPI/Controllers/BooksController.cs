@@ -44,7 +44,7 @@ namespace LibraryAPI.Controllers
 					Price = bookToBeAdded.Price,
 					Publisher = bookToBeAdded.Publisher
 				});
-				actionResult = Created($"api/Books?bookName={bookToBeAdded.BookName}&author={bookToBeAdded.AuthorName}&publisher={bookToBeAdded.Publisher}",
+				actionResult = Created($"api/Books?bookName={bookToBeAdded.BookName}&authorName={bookToBeAdded.AuthorName}&publisher={bookToBeAdded.Publisher}",
 					bookToBeAdded);
 			}
 			catch (Exception ex)
@@ -70,7 +70,7 @@ namespace LibraryAPI.Controllers
 			IActionResult actionResult;
 			try
 			{
-				var filteredBooks = libraryService.GetBooks(searchRequest.BookName, searchRequest.Author, searchRequest.Publisher);
+				var filteredBooks = libraryService.GetBooks(searchRequest.BookName, searchRequest.AuthorName, searchRequest.Publisher);
 				actionResult = new OkObjectResult(filteredBooks);
 			}
 			catch (Exception ex)
