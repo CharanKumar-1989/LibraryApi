@@ -63,7 +63,7 @@ namespace LibraryAPI.Controllers
 		/// <response code="200">When the search is successfull</response>
 		/// <response code="400">When there are no search parameters or validation errors</response>
 		[HttpGet]
-		[Authorize(Roles = "Admin,Customer")]
+		[AllowAnonymous]
 		[ProducesResponseType(typeof(IEquatable<Book>),200)]
 		public IActionResult GetBook([FromQuery]SearchRequest searchRequest)
 		{
