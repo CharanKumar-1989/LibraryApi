@@ -11,6 +11,7 @@ namespace LibraryAPI.Data
 		public LibraryService(IRepository<Book> _bookRepository)
 		{
 			bookRepository = _bookRepository;
+			AddFewBooks();
 		}
 
 		public void AddBook(Book book)
@@ -31,6 +32,14 @@ namespace LibraryAPI.Data
 				books = books.Where(book => book.Publisher.Equals(publisher));
 
 			return books.AsEnumerable();				
+		}
+
+		private void AddFewBooks()
+		{
+			bookRepository.Add(new Book() { BookName = "CLR VIA C#", AuthorName = "Jeffrey Richter", Category = "Technical", Edition = "Fourth", Price = 1429.99, Publisher = "Microsoft Press" });
+			bookRepository.Add(new Book() { BookName = "C# 9 and .NET 5 – Modern Cross-Platform Development", AuthorName = "Mark J Price", Category = "Technical", Edition = "fifth", Price = 2943, Publisher = "Packt" });
+			bookRepository.Add(new Book() { BookName = "Artificial Intelligence", AuthorName = "Russell", Category = "Technical", Edition = "Third", Price = 792, Publisher = "Pearson" });
+			
 		}
 	}
 }
